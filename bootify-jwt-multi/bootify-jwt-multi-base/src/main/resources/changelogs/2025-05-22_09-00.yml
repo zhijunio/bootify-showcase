@@ -1,0 +1,10 @@
+databaseChangeLog:
+  - changeSet:
+      id: bootify-jwt-multi-sequence
+      author: bootify.io
+      changes:
+        - createSequence:
+            cycle: false
+            incrementBy: 1
+            sequenceName: primary_sequence
+            startValue: 10000

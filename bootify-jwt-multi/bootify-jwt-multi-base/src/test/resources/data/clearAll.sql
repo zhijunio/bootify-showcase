@@ -1,0 +1,3 @@
+DELETE FROM "TbUsers";
+
+DELETE FROM "TbRoles";

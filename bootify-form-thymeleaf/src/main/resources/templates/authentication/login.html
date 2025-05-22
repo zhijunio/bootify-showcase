@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout}">
+    <head>
+        <title>[[#{authentication.login.headline}]]</title>
+    </head>
+    <body>
+        <div layout:fragment="content">
+            <h1 class="mb-4">[[#{authentication.login.headline}]]</h1>
+            <div th:replace="~{fragments/forms::globalErrors('authentication')}" />
+            <form th:action="${requestUri}" method="post" novalidate="">
+                <div th:replace="~{fragments/forms::inputRow(object='authentication', field='name', required=true)}" />
+                <div th:replace="~{fragments/forms::inputRow(object='authentication', field='password', required=true, type='password')}" />
+                <input type="submit" th:value="#{authentication.login.headline}" class="btn btn-primary mt-4" />
+            </form>
+            <p class="mt-5">
+                <span>[[#{authentication.registerNow.text}]]</span>
+                <a th:href="@{/register}">[[#{authentication.registerNow.link}]]</a>
+            </p>
+            <h4 class="mt-5 mb-4">[[#{authentication.social.headline}]]</h4>
+            <div class="col-md-4">
+                <a th:href="@{/oauth2/authorization/github}" class="btn btn-secondary w-100 mb-2">
+                    <img th:src="@{/images/github.svg}" width="20" height="20" class="align-text-bottom me-1" />
+                    <span>[[#{authentication.social.github}]]</span>
+                </a>
+            </div>
+        </div>
+    </body>
+</html>

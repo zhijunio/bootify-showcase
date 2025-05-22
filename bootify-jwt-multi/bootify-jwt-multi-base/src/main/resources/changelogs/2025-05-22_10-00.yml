@@ -1,0 +1,84 @@
+databaseChangeLog:
+  - objectQuotingStrategy: QUOTE_ALL_OBJECTS
+  - changeSet:
+      id: bootify-jwt-multi-initial
+      author: bootify.io
+      changes:
+        - createTable:
+            tableName: TbUsers
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: pkUsers
+                    nullable: false
+              - column:
+                  name: name
+                  type: character varying(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: openid
+                  type: character varying(255)
+              - column:
+                  name: loginType
+                  type: character varying(255)
+              - column:
+                  name: hash
+                  type: character varying(255)
+              - column:
+                  name: roleId
+                  type: bigint
+              - column:
+                  name: dateCreated
+                  type: timestamp
+                  constraints:
+                    nullable: false
+              - column:
+                  name: lastUpdated
+                  type: timestamp
+                  constraints:
+                    nullable: false
+        - createTable:
+            tableName: TbRoles
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: pkRoles
+                    nullable: false
+              - column:
+                  name: name
+                  type: character varying(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: dateCreated
+                  type: timestamp
+                  constraints:
+                    nullable: false
+              - column:
+                  name: lastUpdated
+                  type: timestamp
+                  constraints:
+                    nullable: false
+        - addForeignKeyConstraint:
+            constraintName: fkUsersRoleId
+            baseTableName: TbUsers
+            baseColumnNames: roleId
+            referencedTableName: TbRoles
+            referencedColumnNames: id
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+        - addUniqueConstraint:
+            constraintName: uniqueUsersName
+            tableName: TbUsers
+            columnNames: name
+        - addUniqueConstraint:
+            constraintName: uniqueRolesName
+            tableName: TbRoles
+            columnNames: name

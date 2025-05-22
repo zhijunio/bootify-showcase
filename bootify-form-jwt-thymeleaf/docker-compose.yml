@@ -1,0 +1,15 @@
+services:
+  postgres:
+    image: postgres:17.4
+    environment:
+    - POSTGRES_DB=bootify-form-jwt-thymeleaf
+    - POSTGRES_USER=postgres
+    - POSTGRES_PASSWORD=P4ssword!
+    ports:
+    - 5433:5432
+  hazelcast:
+    image: hazelcast/hazelcast:5.5-slim
+    environment:
+    - HZ_CLUSTERNAME=bootify-form-jwt-thymeleaf-cluster
+    ports:
+    - 5702:5701

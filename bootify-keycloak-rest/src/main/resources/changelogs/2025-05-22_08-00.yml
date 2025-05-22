@@ -1,0 +1,55 @@
+databaseChangeLog:
+  - objectQuotingStrategy: QUOTE_ALL_OBJECTS
+  - changeSet:
+      id: bootify-keycloak-rest-initial
+      author: bootify.io
+      changes:
+        - createTable:
+            tableName: TbUsers
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  startWith: 10000
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: pkUsers
+                    nullable: false
+              - column:
+                  name: name
+                  type: character varying(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: hash
+                  type: character varying(255)
+              - column:
+                  name: openid
+                  type: character varying(255)
+              - column:
+                  name: loginType
+                  type: character varying(255)
+              - column:
+                  name: email
+                  type: character varying(255)
+              - column:
+                  name: firstNname
+                  type: character varying(255)
+              - column:
+                  name: lastNamme
+                  type: character varying(255)
+              - column:
+                  name: dateCreated
+                  type: timestamp
+                  constraints:
+                    nullable: false
+              - column:
+                  name: lastUpdated
+                  type: timestamp
+                  constraints:
+                    nullable: false
+        - addUniqueConstraint:
+            constraintName: uniqueUsersName
+            tableName: TbUsers
+            columnNames: name
