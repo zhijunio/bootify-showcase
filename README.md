@@ -1,1 +1,1 @@
-# bootify-samples
+# bootify-showcase
