@@ -13,7 +13,7 @@ services:
     ports:
     - 6380:6379
   keycloak:
-    image: quay.io/keycloak/keycloak:26.4.4
+    image: quay.io/keycloak/keycloak:26.4.5
     environment:
     - KEYCLOAK_ADMIN=admin
     - KEYCLOAK_ADMIN_PASSWORD=P4ssword!
