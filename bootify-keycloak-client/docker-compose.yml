@@ -7,7 +7,7 @@ services:
     ports:
     - 3307:3306
   redis:
-    image: redis:8.2-alpine
+    image: redis:8.4-alpine
     environment:
     - REDIS_PASSWORD=P4ssword!
     ports:
